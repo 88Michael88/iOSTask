@@ -13,6 +13,7 @@ class SearchViewController: UIViewController {
     @IBOutlet var resultsTableView: UITableView!
     
     let resultsArray = [String]()
+    let weatherManager = WeatherManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,9 +39,9 @@ extension SearchViewController: UITextFieldDelegate {
 // MARK: - UITableViewDelegate
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        weatherManager.getWeather(for: searchTextField.text!, with: nil)
         tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: K.segueIdentifier , sender: self)
-        print(indexPath.row)
     }
 }
 

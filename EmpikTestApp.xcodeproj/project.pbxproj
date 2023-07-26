@@ -81,8 +81,8 @@
 		843431C02A7107CE0073EE51 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				843431C22A710B5E0073EE51 /* WeatherManager.swift */,
 				843431C62A71131C0073EE51 /* K.swift */,
+				843431C22A710B5E0073EE51 /* WeatherManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
