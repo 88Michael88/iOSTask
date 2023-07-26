@@ -50,15 +50,7 @@ struct WeatherManager {
             let cityName = decodedData.city.name
             let country = decodedData.city.country
             let list = decodedData.list
-            print(cityName, country)
-            
-            for item in 0...list.count-1 {
-                print(list[item].main.temp)
-                print(list[item].main.humidity)
-                print(list[item].main.pressure)
-            }
-                
-                
+            //print(cityName, country)
         }catch{
             print(error)
         }

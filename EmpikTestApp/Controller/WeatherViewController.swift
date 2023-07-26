@@ -13,9 +13,16 @@ class WeatherViewController: UIViewController {
     @IBOutlet var temperatureLabel: UILabel!
     @IBOutlet var cityLabel: UILabel!
     
+    var cityName: String = ""
+    var numberOfTimestamps = 5
+    var weatherManager = WeatherManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        print(cityName)
+        weatherManager.getWeather(for: cityName, with: nil)
+        navigationItem.title = cityName
     }
 
 

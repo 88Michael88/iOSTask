@@ -12,8 +12,8 @@ class SearchViewController: UIViewController {
     @IBOutlet var searchTextField: UITextField!
     @IBOutlet var resultsTableView: UITableView!
     
-    let resultsArray = [String]()
-    let weatherManager = WeatherManager()
+    let resultsArray = ["Katowice", "Warsaw"]
+    var cityName = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +39,13 @@ extension SearchViewController: UITextFieldDelegate {
 // MARK: - UITableViewDelegate
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        weatherManager.getWeather(for: searchTextField.text!, with: nil)
+        
+        if indexPath.row == 0 {
+            cityName = searchTextField.text!
+        }else {
+            cityName = resultsArray[indexPath.row-1]
+        }
+        
         tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: K.segueIdentifier , sender: self)
     }
@@ -61,4 +67,14 @@ extension SearchViewController: UITableViewDataSource {
         return cell
     }
     
+}
+
+// MARK: - PrepareForSegue
+extension SearchViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.segueIdentifier {
+            let destinationVC = segue.destination as! WeatherViewController
+            destinationVC.cityName = cityName
+        }
+    }
 }
