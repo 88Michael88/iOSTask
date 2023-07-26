@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		843431C32A710B5E0073EE51 /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843431C22A710B5E0073EE51 /* WeatherManager.swift */; };
+		843431C52A710CEC0073EE51 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843431C42A710CEC0073EE51 /* SearchViewController.swift */; };
 		84B597D62A70DDE300A92C90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B597D52A70DDE300A92C90 /* AppDelegate.swift */; };
 		84B597D82A70DDE300A92C90 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B597D72A70DDE300A92C90 /* SceneDelegate.swift */; };
-		84B597DA2A70DDE300A92C90 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B597D92A70DDE300A92C90 /* ViewController.swift */; };
+		84B597DA2A70DDE300A92C90 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B597D92A70DDE300A92C90 /* WeatherViewController.swift */; };
 		84B597DD2A70DDE300A92C90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B597DB2A70DDE300A92C90 /* Main.storyboard */; };
 		84B597DF2A70DDE400A92C90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84B597DE2A70DDE400A92C90 /* Assets.xcassets */; };
 		84B597E22A70DDE400A92C90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B597E02A70DDE400A92C90 /* LaunchScreen.storyboard */; };
@@ -18,10 +19,11 @@
 
 /* Begin PBXFileReference section */
 		843431C22A710B5E0073EE51 /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
+		843431C42A710CEC0073EE51 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		84B597D22A70DDE300A92C90 /* EmpikTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmpikTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B597D52A70DDE300A92C90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84B597D72A70DDE300A92C90 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		84B597D92A70DDE300A92C90 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		84B597D92A70DDE300A92C90 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		84B597DC2A70DDE300A92C90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		84B597DE2A70DDE400A92C90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84B597E12A70DDE400A92C90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,7 +53,8 @@
 		843431BD2A7107AC0073EE51 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				84B597D92A70DDE300A92C90 /* ViewController.swift */,
+				84B597D92A70DDE300A92C90 /* WeatherViewController.swift */,
+				843431C42A710CEC0073EE51 /* SearchViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -189,7 +192,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84B597DA2A70DDE300A92C90 /* ViewController.swift in Sources */,
+				843431C52A710CEC0073EE51 /* SearchViewController.swift in Sources */,
+				84B597DA2A70DDE300A92C90 /* WeatherViewController.swift in Sources */,
 				84B597D62A70DDE300A92C90 /* AppDelegate.swift in Sources */,
 				843431C32A710B5E0073EE51 /* WeatherManager.swift in Sources */,
 				84B597D82A70DDE300A92C90 /* SceneDelegate.swift in Sources */,
