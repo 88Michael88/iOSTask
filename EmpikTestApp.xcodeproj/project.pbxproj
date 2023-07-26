@@ -16,6 +16,7 @@
 		84B597DD2A70DDE300A92C90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B597DB2A70DDE300A92C90 /* Main.storyboard */; };
 		84B597DF2A70DDE400A92C90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84B597DE2A70DDE400A92C90 /* Assets.xcassets */; };
 		84B597E22A70DDE400A92C90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B597E02A70DDE400A92C90 /* LaunchScreen.storyboard */; };
+		84DDCD992A713C1600C28DFB /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDCD982A713C1600C28DFB /* WeatherData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		84B597DE2A70DDE400A92C90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84B597E12A70DDE400A92C90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84B597E32A70DDE400A92C90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84DDCD982A713C1600C28DFB /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 			children = (
 				843431C62A71131C0073EE51 /* K.swift */,
 				843431C22A710B5E0073EE51 /* WeatherManager.swift */,
+				84DDCD982A713C1600C28DFB /* WeatherData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 			files = (
 				843431C52A710CEC0073EE51 /* SearchViewController.swift in Sources */,
 				84B597DA2A70DDE300A92C90 /* WeatherViewController.swift in Sources */,
+				84DDCD992A713C1600C28DFB /* WeatherData.swift in Sources */,
 				843431C72A71131C0073EE51 /* K.swift in Sources */,
 				84B597D62A70DDE300A92C90 /* AppDelegate.swift in Sources */,
 				843431C32A710B5E0073EE51 /* WeatherManager.swift in Sources */,
