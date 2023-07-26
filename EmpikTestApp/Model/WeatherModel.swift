@@ -39,8 +39,10 @@ struct WeatherModel {
         case 800:
             return K.ImageNames.clear
         case 801...802:
+            return K.ImageNames.sunAndClouds
+        case 803:
             return K.ImageNames.cloudsSmall
-        case 803...804:
+        case 804:
             return K.ImageNames.cloudsBig
         default:
             return K.ImageNames.cloudsSmall

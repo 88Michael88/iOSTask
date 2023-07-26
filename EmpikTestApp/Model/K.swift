@@ -9,7 +9,9 @@ import Foundation
 
 struct K {
     static let cellIndetifier = "resultCell"
+    static let weatherCellIndetifier = "weatherCell"
     static let segueIdentifier = "weatherView"
+    static let WeatherCollectionViewCell = "WeatherCollectionViewCell"
     
     struct ImageNames {
         static let thunderstorm = "cloud.bolt.rain.fill"
@@ -19,6 +21,8 @@ struct K {
         
         static let fog = "cloud.fog.fill"
         static let tornado = "tornado"
+        
+        static let sunAndClouds = "cloud.sun.fill"
         
         static let clear = "sun.max.fill"
         static let cloudsSmall = "cloud.fill"
