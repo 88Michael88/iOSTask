@@ -6,13 +6,18 @@
 //
 
 import Foundation
-
+protocol WeatherModelDelegate {
+    func didUpdateWeather(_  weatherManger: WeatherManager, weather: WeatherModel)
+    func didFailWithError(error: Error)
+}
 
 // API Key: dc6ae0d32c6a5e570873504f1d755c4c
 struct WeatherManager {
     let url = "https://api.openweathermap.org/data/2.5/forecast?appid=dc6ae0d32c6a5e570873504f1d755c4c&units=metric"
     // &q={cityName: String}
     // &cnt={numberOfTimestamps: Int}
+    var delegate: WeatherModelDelegate?
+    
     func getWeather(for cityName: String, with numberOfTimestamps: Int?) {
         if let timestamps = numberOfTimestamps {
             performRequest(with: "\(url)&q=\(cityName)&cnt=\(timestamps)")
@@ -30,29 +35,35 @@ struct WeatherManager {
             // 3. Give the URLSession a task.
             let task = session.dataTask(with: url) { data, response, error in
                 if error != nil {
+                    delegate?.didFailWithError(error: error!)
                     return
                 }
                 
                 if let safeData = data {
-                    parseJSON(weatherData: safeData)
+                    if let weather = self.parseJSON(weatherData: safeData) {
+                        self.delegate?.didUpdateWeather(self, weather: weather)
+                    }
                 }
             }
             // 4. Start the task.
             task.resume()
         }
-
     }
     
-    func parseJSON(weatherData: Data) {
+    func parseJSON(weatherData: Data) -> WeatherModel? {
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode(WeatherData.self, from: weatherData)
             let cityName = decodedData.city.name
             let country = decodedData.city.country
             let list = decodedData.list
+            let weatherId = decodedData.list[0].weather[0].id
+            
+            return WeatherModel(temperature: list[0].main.temp, cityName: cityName, country: country, weatherID: weatherId)
             //print(cityName, country)
         }catch{
-            print(error)
+            delegate?.didFailWithError(error: error)
+            return nil
         }
     }
 }

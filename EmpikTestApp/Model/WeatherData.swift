@@ -14,12 +14,18 @@ struct WeatherData: Codable {
 
 struct List: Codable {
     let main: Main
+    let weather: [Weather]
 }
 
 struct Main: Codable {
     let temp: Double
     let humidity: Int
     let pressure: Int
+}
+
+struct Weather: Codable {
+    let id: Int
+    let main: String
 }
 
 struct Country: Codable {

@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Z9y-SP-vm5">
-                                <rect key="frame" x="16" y="113.00000000000001" width="398" height="128.33333333333337"/>
+                                <rect key="frame" x="16" y="113" width="398" height="100"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="mJo-I7-zMl">
                                         <rect key="frame" x="0.0" y="0.0" width="398" height="100"/>
@@ -56,12 +56,6 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Krakow, PL" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMK-HP-gTy">
-                                        <rect key="frame" x="0.0" y="108" width="398" height="20.333333333333343"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -78,7 +72,6 @@
                         <barButtonItem key="rightBarButtonItem" image="location.circle.fill" catalog="system" id="8Mr-wY-eHP"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="cityLabel" destination="TMK-HP-gTy" id="0fI-sK-51M"/>
                         <outlet property="conditionImage" destination="FvC-Mo-NQZ" id="bOE-ZB-K23"/>
                         <outlet property="temperatureLabel" destination="bzh-6R-7pf" id="U1P-4a-c3J"/>
                     </connections>
