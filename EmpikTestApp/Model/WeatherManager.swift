@@ -58,8 +58,18 @@ struct WeatherManager {
             let country = decodedData.city.country
             let list = decodedData.list
             let weatherId = decodedData.list[0].weather[0].id
-            
-            return WeatherModel(temperature: list[0].main.temp, cityName: cityName, country: country, weatherID: weatherId)
+            var fullWeatherArray = [FullWeatherData]()
+            for item in 0...list.count-1 {
+                let element = FullWeatherData(time: K.WeatherFuncs.dataFormatting(list[item].dt_txt),
+                                              weatherConditionImage: K.WeatherFuncs.weatherImage(from: list[item].weather[0].id),
+                                              temperature: K.WeatherFuncs.roundDownString(list[item].main.temp))
+                fullWeatherArray.append(element)
+            }
+            print(fullWeatherArray)
+            return WeatherModel(temperature: list[0].main.temp,
+                                cityName: cityName, country: country,
+                                weatherID: weatherId,
+                                fullWeatherData: fullWeatherArray)
             //print(cityName, country)
         }catch{
             delegate?.didFailWithError(error: error)

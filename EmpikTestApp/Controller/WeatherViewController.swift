@@ -16,6 +16,8 @@ class WeatherViewController: UIViewController {
     var cityName: String = ""
     var numberOfTimestamps = 5
     var weatherManager = WeatherManager()
+    var fullWeatherData = [FullWeatherData]()
+    var ready = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +34,10 @@ class WeatherViewController: UIViewController {
 
 extension WeatherViewController: WeatherModelDelegate {
     func didUpdateWeather(_ weatherManger: WeatherManager, weather: WeatherModel) {
+        fullWeatherData = weather.fullWeatherData
+        ready = true
         DispatchQueue.main.async {
+            self.collectionView.reloadData()
             self.navigationItem.title = "\(weather.cityName), \(weather.country)"
             self.temperatureLabel.text = weather.temperatureString
             self.conditionImage.image = UIImage(systemName: weather.weatherImage)
@@ -51,11 +56,17 @@ extension WeatherViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.weatherCellIndetifier, for: indexPath) as! WeatherCollectionViewCell
-        cell.tempLabel.text = "14.3ºC"
-        cell.timeLabel.text = "12 PM"
-        cell.cellConditionImage.image = UIImage.init(systemName: K.ImageNames.sunAndClouds)
-        cell.backgroundColor = .black
-        
+        if ready {
+            for i in 0...numberOfTimestamps-1 {
+                if i == indexPath.row {
+                    DispatchQueue.main.async {
+                        cell.tempLabel.text = self.fullWeatherData[i].temperature+"ºC"
+                        cell.timeLabel.text = self.fullWeatherData[i].time
+                        cell.cellConditionImage.image = UIImage.init(systemName: self.fullWeatherData[i].weatherConditionImage)
+                    }
+                }
+            }
+        }
         return cell
     }
 }
