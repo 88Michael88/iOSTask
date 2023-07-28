@@ -20,6 +20,7 @@ class SearchViewController: UIViewController {
         // Do any additional setup after loading the view.
         resultsTableView.delegate = self
         resultsTableView.dataSource = self
+        resultsTableView.register(UINib(nibName: K.resultTableViewCell, bundle: nil), forCellReuseIdentifier: K.tabCellIndetifier)
         searchTextField.delegate = self
         searchTextField.addTarget(self, action: #selector(SearchViewController.textFieldDidChange(_:)), for: .editingChanged)
     }
@@ -58,11 +59,11 @@ extension SearchViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIndetifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.tabCellIndetifier, for: indexPath) as! SearchTableViewCell
         if indexPath.row == 0 {
-            cell.textLabel?.text = "'\(searchTextField.text!)'"
+            cell.resultTextLabel.text = "'\(searchTextField.text!)'"
         }else {
-            cell.textLabel?.text = resultsArray[indexPath.row-1]
+            cell.resultTextLabel.text = resultsArray[indexPath.row-1]
         }
         return cell
     }

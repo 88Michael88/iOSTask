@@ -12,6 +12,7 @@ class WeatherViewController: UIViewController {
     @IBOutlet var conditionImage: UIImageView!
     @IBOutlet var temperatureLabel: UILabel!
     @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet var descriptionLabel: UILabel!
     
     var cityName: String = ""
     var numberOfTimestamps = 5
@@ -25,8 +26,7 @@ class WeatherViewController: UIViewController {
         weatherManager.delegate = self
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(UINib(nibName: K.WeatherCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: K.weatherCellIndetifier)
-        print(cityName)
+        collectionView.register(UINib(nibName: K.weatherCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: K.colCellIndetifier)
         weatherManager.getWeather(for: cityName, with: nil)
         navigationItem.title = cityName
     }
@@ -40,6 +40,8 @@ extension WeatherViewController: WeatherModelDelegate {
             self.collectionView.reloadData()
             self.navigationItem.title = "\(weather.cityName), \(weather.country)"
             self.temperatureLabel.text = weather.temperatureString
+            self.temperatureLabel.textColor = K.WeatherFuncs.temperatureColor(for: weather.temperatureString)
+            self.descriptionLabel.text = weather.description.capitalized
             self.conditionImage.image = UIImage(systemName: weather.weatherImage)
         }
     }
@@ -55,7 +57,7 @@ extension WeatherViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.weatherCellIndetifier, for: indexPath) as! WeatherCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.colCellIndetifier, for: indexPath) as! WeatherCollectionViewCell
         if ready {
             for i in 0...numberOfTimestamps-1 {
                 if i == indexPath.row {

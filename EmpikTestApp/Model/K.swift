@@ -5,13 +5,14 @@
 //  Created by Michael on 7/26/23.
 //
 
-import Foundation
+import UIKit
 
 struct K {
-    static let cellIndetifier = "resultCell"
-    static let weatherCellIndetifier = "weatherCell"
+    static let tabCellIndetifier = "resultCell"
+    static let colCellIndetifier = "weatherCell"
     static let segueIdentifier = "weatherView"
-    static let WeatherCollectionViewCell = "WeatherCollectionViewCell"
+    static let weatherCollectionViewCell = "WeatherCollectionViewCell"
+    static let resultTableViewCell = "SearchTableViewCell" 
     
     struct ImageNames {
         static let thunderstorm = "cloud.bolt.rain.fill"
@@ -73,5 +74,32 @@ struct K {
             }
             return ""
         }
+        static func temperatureColor(for temperature: String) -> UIColor {
+            switch Double(temperature)! {
+            case 20...:
+                return UIColor(named: K.ColorNames.TemperatureColors.hot)!
+            case ...10:
+                return UIColor(named: K.ColorNames.TemperatureColors.cold)!
+            default:
+                return UIColor.black
+            }
+        }
+    }
+    
+    struct ColorNames {
+        
+        struct ViewColors {
+            static let backgroundBlue = "BackgroundBlue"
+            static let borderBlue = "BorderBlue"
+            static let colCellBackgroundBlue = "ColCellBackgroundBlue"
+            static let tabCellBackgroundBlue = "TabCellBackgroundBlue"
+            
+        }
+        
+        struct TemperatureColors {
+            static let hot = "Hot"
+            static let cold = "Cold"
+        }
+        
     }
 }

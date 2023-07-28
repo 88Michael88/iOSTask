@@ -13,6 +13,7 @@ struct WeatherModel {
     let country: String
     //let nextHours: []
     let weatherID: Int
+    let description: String
     let fullWeatherData: [FullWeatherData]
     
     var temperatureString: String {

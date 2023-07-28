@@ -69,6 +69,7 @@
             </constraints>
             <size key="customSize" width="80" height="100"/>
             <connections>
+                <outlet property="backgroundUIView" destination="t1K-uc-LnP" id="S7S-lO-oJ4"/>
                 <outlet property="cellConditionImage" destination="xGi-nb-CbN" id="GCz-Al-I2r"/>
                 <outlet property="tempLabel" destination="2h3-0T-1jj" id="dKU-T5-MYG"/>
                 <outlet property="timeLabel" destination="TZv-dH-EYo" id="DOe-xa-d5c"/>

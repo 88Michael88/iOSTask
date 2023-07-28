@@ -24,6 +24,7 @@ struct WeatherManager {
         }else{
             //Default
             performRequest(with: "\(url)&q=\(cityName)&cnt=5")
+            print("\(url)&q=\(cityName)&cnt=5")
         }
     }
     
@@ -54,10 +55,7 @@ struct WeatherManager {
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode(WeatherData.self, from: weatherData)
-            let cityName = decodedData.city.name
-            let country = decodedData.city.country
             let list = decodedData.list
-            let weatherId = decodedData.list[0].weather[0].id
             var fullWeatherArray = [FullWeatherData]()
             for item in 0...list.count-1 {
                 let element = FullWeatherData(time: K.WeatherFuncs.dataFormatting(list[item].dt_txt),
@@ -65,12 +63,11 @@ struct WeatherManager {
                                               temperature: K.WeatherFuncs.roundDownString(list[item].main.temp))
                 fullWeatherArray.append(element)
             }
-            print(fullWeatherArray)
             return WeatherModel(temperature: list[0].main.temp,
-                                cityName: cityName, country: country,
-                                weatherID: weatherId,
+                                cityName: decodedData.city.name, country: decodedData.city.country,
+                                weatherID: list[0].weather[0].id,
+                                description: list[0].weather[0].description,
                                 fullWeatherData: fullWeatherArray)
-            //print(cityName, country)
         }catch{
             delegate?.didFailWithError(error: error)
             return nil
