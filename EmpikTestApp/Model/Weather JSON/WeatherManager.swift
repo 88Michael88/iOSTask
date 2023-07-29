@@ -32,10 +32,10 @@ struct WeatherManager {
     func getWeather(for latitude: Double, and longitude: Double, with numberOfTimestamps: Int?) {
         
         if let timestamps = numberOfTimestamps {
-            performRequest(with: "\(url)&lat=\(Double(round(1000 * latitude) / 1000))&lon=\(Double(round(1000 * longitude) / 1000))&cnt=\(timestamps)")
+            performRequest(with: "\(url)&lat=\(latitude.roundBy(places: 3))&lon=\(longitude.roundBy(places: 3))&cnt=\(timestamps)")
         }else{
-            performRequest(with: "\(url)&lat=\(Double(round(1000 * latitude) / 1000))&lon=\(Double(round(1000 * longitude) / 1000))&cnt=5")
-            print("\(url)&lat=\(Double(round(1000 * latitude) / 1000))&lon=\(Double(round(1000 * longitude) / 1000))&cnt=5")
+            performRequest(with: "\(url)&lat=\(latitude.roundBy(places: 3))&lon=\(longitude.roundBy(places: 3))&cnt=5")
+            print("\(url)&lat=\(latitude.roundBy(places: 3))&lon=\(longitude.roundBy(places: 3))&cnt=5")
         }
     }
     

@@ -27,15 +27,15 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cnr-wI-XbT">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="120.33333333333333"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="FvC-Mo-NQZ">
-                                                        <rect key="frame" x="0.0" y="2.6666666666666643" width="100" height="95"/>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="FvC-Mo-NQZ">
+                                                        <rect key="frame" x="0.0" y="1" width="100" height="98.666666666666657"/>
                                                         <color key="tintColor" systemColor="labelColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="100" id="UKf-4S-ihW"/>
                                                             <constraint firstAttribute="height" constant="100" id="zKR-uC-XkB"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="pGj-e6-B9C">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="---" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="pGj-e6-B9C">
                                                         <rect key="frame" x="0.0" y="100" width="100" height="20.333333333333329"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
@@ -46,7 +46,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Juh-qW-STb">
                                                 <rect key="frame" x="105" y="0.0" width="293" height="120.33333333333333"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="25.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="bzh-6R-7pf">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="--.-" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="bzh-6R-7pf">
                                                         <rect key="frame" x="0.0" y="0.0" width="231.66666666666666" height="120.33333333333333"/>
                                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="50"/>
                                                         <nil key="textColor"/>
@@ -84,14 +84,35 @@
                                     </collectionView>
                                 </subviews>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9VG-FK-SKI">
+                                <rect key="frame" x="190" y="441" width="50" height="50"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="m0R-ve-bfM">
+                                        <rect key="frame" x="10" y="10" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="SxA-f8-Kl7"/>
+                                            <constraint firstAttribute="height" constant="30" id="wc1-pq-cxs"/>
+                                        </constraints>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" name="TabCellBackgroundBlue"/>
+                                <constraints>
+                                    <constraint firstItem="m0R-ve-bfM" firstAttribute="centerY" secondItem="9VG-FK-SKI" secondAttribute="centerY" id="Mwh-fH-GB1"/>
+                                    <constraint firstAttribute="width" constant="50" id="XjF-PZ-mQd"/>
+                                    <constraint firstItem="m0R-ve-bfM" firstAttribute="centerX" secondItem="9VG-FK-SKI" secondAttribute="centerX" id="n2p-GO-lJR"/>
+                                    <constraint firstAttribute="height" constant="50" id="non-bE-RVE"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="BackgroundBlue"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Z9y-SP-vm5" secondAttribute="trailing" constant="16" id="0Ms-gx-4AM"/>
                             <constraint firstItem="Z9y-SP-vm5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="DKK-6b-Wfu"/>
+                            <constraint firstItem="9VG-FK-SKI" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="FSO-xo-y3T"/>
                             <constraint firstItem="Z9y-SP-vm5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="NU7-Zd-iAE"/>
                             <constraint firstItem="Z9y-SP-vm5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ewJ-es-dPV"/>
+                            <constraint firstItem="9VG-FK-SKI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="k6u-2f-Vi2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Kraków" id="YYd-hl-djw">
@@ -102,9 +123,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="m0R-ve-bfM" id="Yfv-MK-mMu"/>
                         <outlet property="collectionView" destination="aD8-kx-g17" id="S0t-oo-v4V"/>
                         <outlet property="conditionImage" destination="FvC-Mo-NQZ" id="bOE-ZB-K23"/>
                         <outlet property="descriptionLabel" destination="pGj-e6-B9C" id="eOF-Tb-h98"/>
+                        <outlet property="loadingView" destination="9VG-FK-SKI" id="1DR-f4-SFx"/>
                         <outlet property="temperatureLabel" destination="bzh-6R-7pf" id="U1P-4a-c3J"/>
                     </connections>
                 </viewController>
@@ -184,11 +207,14 @@
         </scene>
     </scenes>
     <resources>
-        <image name="cloud" catalog="system" width="128" height="87"/>
+        <image name="circle.fill" catalog="system" width="128" height="123"/>
         <image name="gear" catalog="system" width="128" height="122"/>
         <image name="location.circle.fill" catalog="system" width="128" height="123"/>
         <namedColor name="BackgroundBlue">
             <color red="0.58039215686274515" green="0.77254901960784317" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="TabCellBackgroundBlue">
+            <color red="0.29019607843137257" green="0.41176470588235292" blue="0.74117647058823533" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

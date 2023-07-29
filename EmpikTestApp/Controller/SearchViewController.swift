@@ -69,6 +69,7 @@ extension SearchViewController: UITableViewDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("text-")
         searchTextField.endEditing(true)
         return true
     }
