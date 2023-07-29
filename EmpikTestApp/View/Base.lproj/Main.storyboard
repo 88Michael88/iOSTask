@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Kraków-->
+        <!-- - -->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="WeatherViewController" customModule="EmpikTestApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -115,7 +115,7 @@
                             <constraint firstItem="9VG-FK-SKI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="k6u-2f-Vi2"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Kraków" id="YYd-hl-djw">
+                    <navigationItem key="navigationItem" title="---" id="YYd-hl-djw">
                         <barButtonItem key="rightBarButtonItem" image="location.circle.fill" catalog="system" id="8Mr-wY-eHP">
                             <connections>
                                 <action selector="locationButtonPressed:" destination="BYZ-38-t0r" id="hM0-iP-PcK"/>
@@ -224,7 +224,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search for a City..." minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="3Kn-PV-BvZ">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Krakow" borderStyle="roundedRect" placeholder="Search for a City..." minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="3Kn-PV-BvZ">
                                 <rect key="frame" x="20" y="113" width="390" height="40"/>
                                 <color key="backgroundColor" red="0.59999999999999998" green="0.80000000000000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>

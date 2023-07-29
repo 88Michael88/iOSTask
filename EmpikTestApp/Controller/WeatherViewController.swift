@@ -70,7 +70,8 @@ extension WeatherViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error.localizedDescription)
+        errorAlert(withMessage: K.Error.errorMessageLocation)
+        print(error.localizedDescription, "Error1")
     }
 }
 
@@ -90,7 +91,8 @@ extension WeatherViewController: WeatherModelDelegate {
     }
     
     func didFailWithError(error: Error) {
-        print(error.localizedDescription)
+        errorAlert(withMessage: K.Error.errorMessageInternet)
+        print(error.localizedDescription, "Error2")
     }
 }
 
@@ -108,6 +110,7 @@ extension WeatherViewController: UICollectionViewDataSource {
                     DispatchQueue.main.async {
                         self.hideSpinner()
                         cell.tempLabel.text = self.fullWeatherData[i].temperature+"ºC"
+                        cell.tempLabel.textColor = K.WeatherFuncs.temperatureColor(for: self.fullWeatherData[i].temperature)
                         cell.timeLabel.text = self.fullWeatherData[i].time
                         cell.cellConditionImage.image = UIImage.init(systemName: self.fullWeatherData[i].weatherConditionImage)
                     }
@@ -124,7 +127,6 @@ extension WeatherViewController {
     private func showSpinner() {
         activityIndicator.startAnimating()
         loadingView.isHidden = false
-
     }
     
     private func hideSpinner() {
@@ -132,3 +134,20 @@ extension WeatherViewController {
         loadingView.isHidden = true
     }
 }
+
+// MARK: - ErrorPopUp
+extension WeatherViewController {
+    func errorAlert(withMessage errorMessage: String) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: K.Error.error, message: errorMessage, preferredStyle: .alert)
+            let action = UIAlertAction(title: K.Error.okay, style: .cancel) { _ in
+                self.navigationController?.popViewController(animated: true)
+            }
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+            
+        }
+    }
+    
+}
+

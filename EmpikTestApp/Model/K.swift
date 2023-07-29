@@ -106,4 +106,11 @@ struct K {
         }
         
     }
+    
+    struct Error {
+        static let error = "Error"
+        static let errorMessageInternet = "Please check your Internet connection and try again."
+        static let errorMessageLocation = "Please check your GPS connection and try again."
+        static let okay = "Okay."
+    }
 }
