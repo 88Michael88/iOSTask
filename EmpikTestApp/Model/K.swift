@@ -10,14 +10,22 @@ import UIKit
 struct K {
     static let tabCellIndetifier = "resultCell"
     static let colCellIndetifier = "weatherCell"
-    static let segueIdentifier = "weatherView"
+    
     static let weatherCollectionViewCell = "WeatherCollectionViewCell"
     static let resultTableViewCell = "SearchTableViewCell" 
     
     static let defaultResult = "Please put in a valid City name."
     
-    static let savedIntervales = "Saved Intervales"
+    struct Segues {
+        static let historySegue = "historyView"
+        static let weatherSegue = "weatherView"
+    }
     
+    struct UserDefaults {
+        static let savedIntervales = "Saved Intervales"
+        static let savedHistory = "Saved History"
+    }
+
     struct ImageNames {
         static let thunderstorm = "cloud.bolt.rain.fill"
         static let drizzle = "cloud.drizzle.fill"
@@ -110,6 +118,7 @@ struct K {
     struct Error {
         static let error = "Error"
         static let errorMessageInternet = "Please check your Internet connection and try again."
+        static let errorMessageCity = "Please put in a valid city name and try again."
         static let errorMessageLocation = "Please check your GPS connection and try again."
         static let okay = "Okay."
     }

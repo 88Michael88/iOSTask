@@ -14,7 +14,8 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var histroyTableView: UITableView!
     @IBOutlet weak var historyLabel: UILabel!
     
-    var historyArray = ["Krakow"]
+    var historyArray = [String]()
+    var position = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,14 +23,17 @@ class SettingViewController: UIViewController {
         histroyTableView.delegate = self
         histroyTableView.dataSource = self
         histroyTableView.register(UINib(nibName: K.resultTableViewCell, bundle: nil), forCellReuseIdentifier: K.tabCellIndetifier)
+        if UserDefaults.standard.array(forKey: K.UserDefaults.savedHistory) != nil {
+            historyArray = UserDefaults.standard.array(forKey: K.UserDefaults.savedHistory) as! [String]
+        }
         if historyArray.count == 0 {
             historyLabel.isHidden = true
             histroyTableView.isHidden = true
         }
-        if UserDefaults.standard.double(forKey: K.savedIntervales) != 0.0 {
-            print(UserDefaults.standard.double(forKey: K.savedIntervales))
-            intervalsStepper.value = UserDefaults.standard.double(forKey: K.savedIntervales)
-            intervalsLabel.text = String(Int(UserDefaults.standard.double(forKey: K.savedIntervales)))
+        if UserDefaults.standard.double(forKey: K.UserDefaults.savedIntervales) != 0.0 {
+            print(UserDefaults.standard.double(forKey: K.UserDefaults.savedIntervales))
+            intervalsStepper.value = UserDefaults.standard.double(forKey: K.UserDefaults.savedIntervales)
+            intervalsLabel.text = String(Int(UserDefaults.standard.double(forKey: K.UserDefaults.savedIntervales)))
         }else{
             intervalsStepper.value = 5
         }
@@ -37,12 +41,15 @@ class SettingViewController: UIViewController {
     
     @IBAction func intervalsStepperPressed(_ sender: UIStepper) {
         intervalsLabel.text = "\(Int(sender.value))"
-        UserDefaults.standard.set(sender.value, forKey: K.savedIntervales)
+        UserDefaults.standard.set(sender.value, forKey: K.UserDefaults.savedIntervales)
     }
 }
 
 extension SettingViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        position = indexPath.row
+        performSegue(withIdentifier: K.Segues.historySegue , sender: self)
+    }
 }
 
 extension SettingViewController: UITableViewDataSource {
@@ -57,4 +64,14 @@ extension SettingViewController: UITableViewDataSource {
     }
     
     
+}
+
+// MARK: - PrepareForSegue
+extension SettingViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.Segues.historySegue {
+            let destinationVC = segue.destination as! WeatherViewController
+            destinationVC.cityName = historyArray[position]
+        }
+    }
 }

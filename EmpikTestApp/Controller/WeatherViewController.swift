@@ -37,20 +37,19 @@ class WeatherViewController: UIViewController  {
         locationManager.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: K.weatherCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: K.colCellIndetifier)
-        weatherManager.getWeather(for: cityName, with: Int(UserDefaults.standard.double(forKey: K.savedIntervales)))
+        weatherManager.getWeather(for: cityName, with: Int(UserDefaults.standard.double(forKey: K.UserDefaults.savedIntervales)))
         navigationItem.title = cityName
         
         locationManager.requestWhenInUseAuthorization()
         if location {
             locationManager.requestLocation()
         }
-        if UserDefaults.standard.double(forKey: K.savedIntervales) != 0.0 {
-            numberOfTimestamps = Int(UserDefaults.standard.double(forKey: K.savedIntervales))
+        if UserDefaults.standard.double(forKey: K.UserDefaults.savedIntervales) != 0.0 {
+            numberOfTimestamps = Int(UserDefaults.standard.double(forKey: K.UserDefaults.savedIntervales))
         }
-        
     }
-    
 }
+
 // MARK: - CLLocationManagerDelegate
 extension WeatherViewController: CLLocationManagerDelegate {
     @IBAction func locationButtonPressed(_ sender: UIBarButtonItem) {
@@ -63,7 +62,7 @@ extension WeatherViewController: CLLocationManagerDelegate {
             locationManager.stopUpdatingLocation()
             let lat = location.coordinate.latitude
             let lon = location.coordinate.longitude
-            weatherManager.getWeather(for: lat, and: lon, with: Int(UserDefaults.standard.double(forKey: K.savedIntervales)))
+            weatherManager.getWeather(for: lat, and: lon, with: Int(UserDefaults.standard.double(forKey: K.UserDefaults.savedIntervales)))
             collectionView.reloadData()
             
         }
@@ -71,7 +70,6 @@ extension WeatherViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         errorAlert(withMessage: K.Error.errorMessageLocation)
-        print(error.localizedDescription, "Error1")
     }
 }
 
@@ -91,8 +89,12 @@ extension WeatherViewController: WeatherModelDelegate {
     }
     
     func didFailWithError(error: Error) {
-        errorAlert(withMessage: K.Error.errorMessageInternet)
-        print(error.localizedDescription, "Error2")
+        if !location {
+            if error.localizedDescription == "The data couldn’t be read because it is missing."{
+                errorAlert(withMessage: K.Error.errorMessageCity)
+            }
+            errorAlert(withMessage: K.Error.errorMessageInternet)
+        }
     }
 }
 
@@ -113,6 +115,9 @@ extension WeatherViewController: UICollectionViewDataSource {
                         cell.tempLabel.textColor = K.WeatherFuncs.temperatureColor(for: self.fullWeatherData[i].temperature)
                         cell.timeLabel.text = self.fullWeatherData[i].time
                         cell.cellConditionImage.image = UIImage.init(systemName: self.fullWeatherData[i].weatherConditionImage)
+                        if !self.location {
+                            self.historyArray(append: self.cityName)
+                        }
                     }
                 }
             }
@@ -122,7 +127,6 @@ extension WeatherViewController: UICollectionViewDataSource {
 }
 
 // MARK: - UIActivityIndicatorView
-
 extension WeatherViewController {
     private func showSpinner() {
         activityIndicator.startAnimating()
@@ -148,6 +152,23 @@ extension WeatherViewController {
             
         }
     }
-    
 }
 
+// MARK: - HistoryArray
+extension WeatherViewController {
+    func historyArray(append string: String) {
+        var historyArray: [String] = UserDefaults.standard.array(forKey: K.UserDefaults.savedHistory) as? [String] ?? [cityName]
+        print(historyArray)
+        if !historyArray.contains(string) {
+            if historyArray.count < 20 {
+                historyArray.append(string)
+            }else{
+                historyArray.removeFirst()
+                historyArray.append(string)
+            }
+        }
+        print(historyArray.count)
+        UserDefaults.standard.set(historyArray, forKey: K.UserDefaults.savedHistory)
+        print(historyArray)
+    }
+}

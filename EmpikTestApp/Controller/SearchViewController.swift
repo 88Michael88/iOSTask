@@ -35,7 +35,7 @@ class SearchViewController: UIViewController {
 extension SearchViewController {
     @IBAction func getLocationPressed(_ sender: UIBarButtonItem) {
         location = true
-        performSegue(withIdentifier: K.segueIdentifier , sender: self)
+        performSegue(withIdentifier: K.Segues.weatherSegue , sender: self)
     }
 }
 
@@ -60,16 +60,15 @@ extension SearchViewController: UITableViewDelegate {
         
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.section == 0 {
-            performSegue(withIdentifier: K.segueIdentifier , sender: self)
+            performSegue(withIdentifier: K.Segues.weatherSegue, sender: self)
             return
         }
         if resultsArray[indexPath.row] != K.defaultResult {
-            performSegue(withIdentifier: K.segueIdentifier , sender: self)
+            performSegue(withIdentifier: K.Segues.weatherSegue, sender: self)
         }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print("text-")
         searchTextField.endEditing(true)
         return true
     }
@@ -77,7 +76,7 @@ extension SearchViewController: UITableViewDelegate {
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         if searchTextField.text != "" && stop == false {
             cityName = searchTextField.text!
-            performSegue(withIdentifier: K.segueIdentifier , sender: self)
+            performSegue(withIdentifier: K.Segues.weatherSegue, sender: self)
             return true
         }else{
             searchTextField.placeholder = "Type a City name."
@@ -127,9 +126,8 @@ extension SearchViewController: UITableViewDataSource {
 // MARK: - PrepareForSegue
 extension SearchViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == K.segueIdentifier {
+        if segue.identifier == K.Segues.weatherSegue {
             let destinationVC = segue.destination as! WeatherViewController
-            
             if location {
                 destinationVC.location = location
             }else {

@@ -210,6 +210,7 @@
                         <outlet property="histroyTableView" destination="iJP-Iz-vMz" id="PK4-3V-FuC"/>
                         <outlet property="intervalsLabel" destination="UKy-wX-Nb7" id="gIZ-uP-7o1"/>
                         <outlet property="intervalsStepper" destination="ZOm-pa-2nk" id="WM2-Ci-Rkj"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="historyView" id="7I9-n7-EqE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MVi-6R-Dj0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -224,7 +225,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Krakow" borderStyle="roundedRect" placeholder="Search for a City..." minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="3Kn-PV-BvZ">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search for a City..." minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="3Kn-PV-BvZ">
                                 <rect key="frame" x="20" y="113" width="390" height="40"/>
                                 <color key="backgroundColor" red="0.59999999999999998" green="0.80000000000000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -291,6 +292,9 @@
             <point key="canvasLocation" x="-738.16793893129773" y="-2.1126760563380285"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="JXG-XP-Irz"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="circle.fill" catalog="system" width="128" height="123"/>
         <image name="gear" catalog="system" width="128" height="122"/>

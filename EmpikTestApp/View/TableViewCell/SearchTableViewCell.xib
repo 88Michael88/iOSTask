@@ -20,10 +20,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wzd-0Z-rg2">
-                        <rect key="frame" x="5" y="3" width="396" height="35"/>
+                        <rect key="frame" x="10" y="3" width="386" height="35"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OF3-M0-dJw">
-                                <rect key="frame" x="10" y="7.3333333333333339" width="376" height="20.333333333333329"/>
+                                <rect key="frame" x="10" y="7.3333333333333339" width="366" height="20.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -44,8 +44,8 @@
                 <constraints>
                     <constraint firstItem="wzd-0Z-rg2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="FuX-dM-Yv4"/>
                     <constraint firstAttribute="bottom" secondItem="wzd-0Z-rg2" secondAttribute="bottom" constant="2" id="H2r-NU-GCy"/>
-                    <constraint firstItem="wzd-0Z-rg2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="PHW-mx-Ofw"/>
-                    <constraint firstAttribute="trailing" secondItem="wzd-0Z-rg2" secondAttribute="trailing" constant="5" id="sak-VL-bRy"/>
+                    <constraint firstItem="wzd-0Z-rg2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="PHW-mx-Ofw"/>
+                    <constraint firstAttribute="trailing" secondItem="wzd-0Z-rg2" secondAttribute="trailing" constant="10" id="sak-VL-bRy"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
