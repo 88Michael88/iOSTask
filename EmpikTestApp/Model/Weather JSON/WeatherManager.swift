@@ -18,24 +18,23 @@ struct WeatherManager {
     // &cnt={numberOfTimestamps: Int}
     var delegate: WeatherModelDelegate?
 
-     func getWeather(for cityName: String, with numberOfTimestamps: Int?) {
+     func getWeather(for cityName: String, with numberOfTimestamps: Int) {
         
         let city = cityName.components(separatedBy: " ").joined(separator: "%20")
         
-        if let timestamps = numberOfTimestamps {
-            performRequest(with: "\(url)&q=\(city)&cnt=\(timestamps)")
-        }else{
+         if numberOfTimestamps == 0 {
             performRequest(with: "\(url)&q=\(city)&cnt=5")
+        }else{
+            performRequest(with: "\(url)&q=\(city)&cnt=\(numberOfTimestamps)")
         }
     }
     
-    func getWeather(for latitude: Double, and longitude: Double, with numberOfTimestamps: Int?) {
+    func getWeather(for latitude: Double, and longitude: Double, with numberOfTimestamps: Int) {
         
-        if let timestamps = numberOfTimestamps {
-            performRequest(with: "\(url)&lat=\(latitude.roundBy(places: 3))&lon=\(longitude.roundBy(places: 3))&cnt=\(timestamps)")
-        }else{
+        if numberOfTimestamps == 0 {
             performRequest(with: "\(url)&lat=\(latitude.roundBy(places: 3))&lon=\(longitude.roundBy(places: 3))&cnt=5")
-            print("\(url)&lat=\(latitude.roundBy(places: 3))&lon=\(longitude.roundBy(places: 3))&cnt=5")
+        }else{
+            performRequest(with: "\(url)&lat=\(latitude.roundBy(places: 3))&lon=\(longitude.roundBy(places: 3))&cnt=\(numberOfTimestamps)")
         }
     }
     

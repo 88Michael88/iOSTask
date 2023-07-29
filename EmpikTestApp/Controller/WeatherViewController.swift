@@ -37,13 +37,17 @@ class WeatherViewController: UIViewController  {
         locationManager.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: K.weatherCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: K.colCellIndetifier)
-        weatherManager.getWeather(for: cityName, with: nil)
+        weatherManager.getWeather(for: cityName, with: Int(UserDefaults.standard.double(forKey: K.savedIntervales)))
         navigationItem.title = cityName
         
         locationManager.requestWhenInUseAuthorization()
         if location {
             locationManager.requestLocation()
         }
+        if UserDefaults.standard.double(forKey: K.savedIntervales) != 0.0 {
+            numberOfTimestamps = Int(UserDefaults.standard.double(forKey: K.savedIntervales))
+        }
+        
     }
     
 }
@@ -59,7 +63,7 @@ extension WeatherViewController: CLLocationManagerDelegate {
             locationManager.stopUpdatingLocation()
             let lat = location.coordinate.latitude
             let lon = location.coordinate.longitude
-            weatherManager.getWeather(for: lat, and: lon, with: nil)
+            weatherManager.getWeather(for: lat, and: lon, with: Int(UserDefaults.standard.double(forKey: K.savedIntervales)))
             collectionView.reloadData()
             
         }

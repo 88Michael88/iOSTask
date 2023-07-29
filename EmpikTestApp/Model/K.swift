@@ -16,6 +16,8 @@ struct K {
     
     static let defaultResult = "Please put in a valid City name."
     
+    static let savedIntervales = "Saved Intervales"
+    
     struct ImageNames {
         static let thunderstorm = "cloud.bolt.rain.fill"
         static let drizzle = "cloud.drizzle.fill"

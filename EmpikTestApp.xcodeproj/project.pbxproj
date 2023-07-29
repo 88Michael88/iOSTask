@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8416C7672A7551E20041029E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8416C7662A7551E20041029E /* SettingViewController.swift */; };
 		843431C32A710B5E0073EE51 /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843431C22A710B5E0073EE51 /* WeatherManager.swift */; };
 		843431C52A710CEC0073EE51 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843431C42A710CEC0073EE51 /* SearchViewController.swift */; };
 		843431C72A71131C0073EE51 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843431C62A71131C0073EE51 /* K.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8416C7662A7551E20041029E /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		843431C22A710B5E0073EE51 /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
 		843431C42A710CEC0073EE51 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		843431C62A71131C0073EE51 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
@@ -63,6 +65,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8416C7682A7553480041029E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				84A26B312A75421C0044A020 /* Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		843431BC2A7107A30073EE51 /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +87,7 @@
 			children = (
 				84B597D92A70DDE300A92C90 /* WeatherViewController.swift */,
 				843431C42A710CEC0073EE51 /* SearchViewController.swift */,
+				8416C7662A7551E20041029E /* SettingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -106,7 +117,7 @@
 				843431C62A71131C0073EE51 /* K.swift */,
 				84A26B2C2A74FDB90044A020 /* City Info */,
 				84AEFD0F2A7422F30088D7D5 /* Weather JSON */,
-				84A26B312A75421C0044A020 /* Extensions.swift */,
+				8416C7682A7553480041029E /* Extensions */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -264,6 +275,7 @@
 				84A26B302A74FDD10044A020 /* CityData.swift in Sources */,
 				843431C52A710CEC0073EE51 /* SearchViewController.swift in Sources */,
 				84B597DA2A70DDE300A92C90 /* WeatherViewController.swift in Sources */,
+				8416C7672A7551E20041029E /* SettingViewController.swift in Sources */,
 				84AEFD0D2A741CE60088D7D5 /* SearchTableViewCell.swift in Sources */,
 				84DDCD992A713C1600C28DFB /* WeatherData.swift in Sources */,
 				843431C72A71131C0073EE51 /* K.swift in Sources */,

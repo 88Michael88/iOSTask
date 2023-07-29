@@ -129,6 +129,7 @@ extension SearchViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.segueIdentifier {
             let destinationVC = segue.destination as! WeatherViewController
+            
             if location {
                 destinationVC.location = location
             }else {
