@@ -51,6 +51,7 @@ extension SearchViewController: UITextFieldDelegate {
 // MARK: - UITableViewDelegate
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        location = false
         stop = true
         if indexPath.section == 0 {
             cityName = searchTextField.text!
