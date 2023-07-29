@@ -13,9 +13,10 @@ class SearchViewController: UIViewController {
     @IBOutlet var resultsTableView: UITableView!
     
     var resultsArray = [String]()
-    var cityName = ""
     var cityManager = CityManager()
+    var cityName = ""
     var stop = false
+    var location = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,14 @@ class SearchViewController: UIViewController {
         searchTextField.addTarget(self, action: #selector(SearchViewController.textFieldDidChange(_:)), for: .editingChanged)
     }
     
+
+}
+
+// MARK: - CLLocationManagerDelegate
+extension SearchViewController {
     @IBAction func getLocationPressed(_ sender: UIBarButtonItem) {
+        location = true
+        performSegue(withIdentifier: K.segueIdentifier , sender: self)
     }
 }
 
@@ -120,7 +128,11 @@ extension SearchViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.segueIdentifier {
             let destinationVC = segue.destination as! WeatherViewController
-            destinationVC.cityName = cityName
+            if location {
+                destinationVC.location = location
+            }else {
+                destinationVC.cityName = cityName
+            }
         }
     }
 }

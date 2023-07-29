@@ -6,32 +6,62 @@
 //
 
 import UIKit
+import CoreLocation
 
-class WeatherViewController: UIViewController {
+class WeatherViewController: UIViewController  {
 
     @IBOutlet var conditionImage: UIImageView!
     @IBOutlet var temperatureLabel: UILabel!
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var descriptionLabel: UILabel!
     
-    var cityName: String = ""
-    var numberOfTimestamps = 5
     var weatherManager = WeatherManager()
     var fullWeatherData = [FullWeatherData]()
+    var locationManager = CLLocationManager()
+    var cityName: String = ""
+    var numberOfTimestamps = 5
     var ready = false
+    var location = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         weatherManager.delegate = self
-        collectionView.delegate = self
+        locationManager.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: K.weatherCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: K.colCellIndetifier)
         weatherManager.getWeather(for: cityName, with: nil)
         navigationItem.title = cityName
+        
+        locationManager.requestWhenInUseAuthorization()
+        if location {
+            locationManager.requestLocation()
+        }
+    }
+    
+}
+// MARK: - CLLocationManagerDelegate
+extension WeatherViewController: CLLocationManagerDelegate {
+    @IBAction func locationButtonPressed(_ sender: UIBarButtonItem) {
+        locationManager.requestLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            locationManager.stopUpdatingLocation()
+            let lat = location.coordinate.latitude
+            let lon = location.coordinate.longitude
+            weatherManager.getWeather(for: lat, and: lon, with: nil)
+            collectionView.reloadData()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error.localizedDescription)
     }
 }
 
+// MARK: - WeatherModelDelegate
 extension WeatherViewController: WeatherModelDelegate {
     func didUpdateWeather(_ weatherManger: WeatherManager, weather: WeatherModel) {
         fullWeatherData = weather.fullWeatherData
@@ -51,6 +81,7 @@ extension WeatherViewController: WeatherModelDelegate {
     }
 }
 
+// MARK: - UICollectionViewDataSource
 extension WeatherViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return numberOfTimestamps
@@ -71,8 +102,4 @@ extension WeatherViewController: UICollectionViewDataSource {
         }
         return cell
     }
-}
-
-extension WeatherViewController: UICollectionViewDelegate {
-    
 }

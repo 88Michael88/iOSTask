@@ -25,9 +25,17 @@ struct WeatherManager {
         if let timestamps = numberOfTimestamps {
             performRequest(with: "\(url)&q=\(city)&cnt=\(timestamps)")
         }else{
-            //Default
             performRequest(with: "\(url)&q=\(city)&cnt=5")
-            print("\(url)&q=\(city)&cnt=5")
+        }
+    }
+    
+    func getWeather(for latitude: Double, and longitude: Double, with numberOfTimestamps: Int?) {
+        
+        if let timestamps = numberOfTimestamps {
+            performRequest(with: "\(url)&lat=\(Double(round(1000 * latitude) / 1000))&lon=\(Double(round(1000 * longitude) / 1000))&cnt=\(timestamps)")
+        }else{
+            performRequest(with: "\(url)&lat=\(Double(round(1000 * latitude) / 1000))&lon=\(Double(round(1000 * longitude) / 1000))&cnt=5")
+            print("\(url)&lat=\(Double(round(1000 * latitude) / 1000))&lon=\(Double(round(1000 * longitude) / 1000))&cnt=5")
         }
     }
     
