@@ -12,8 +12,10 @@ class SearchViewController: UIViewController {
     @IBOutlet var searchTextField: UITextField!
     @IBOutlet var resultsTableView: UITableView!
     
-    let resultsArray = ["Katowice", "Warsaw"]
+    var resultsArray = [String]()
     var cityName = ""
+    var cityManager = CityManager()
+    var stop = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +34,7 @@ class SearchViewController: UIViewController {
 // MARK: - UITextFieldDelegate
 extension SearchViewController: UITextFieldDelegate {
     @objc func textFieldDidChange(_ textField: UITextField) {
+        resultsArray = cityManager.getCityNames(for: textField.text!)
         resultsTableView.reloadData()
     }
     
@@ -40,30 +43,72 @@ extension SearchViewController: UITextFieldDelegate {
 // MARK: - UITableViewDelegate
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        if indexPath.row == 0 {
+        stop = true
+        if indexPath.section == 0 {
             cityName = searchTextField.text!
         }else {
-            cityName = resultsArray[indexPath.row-1]
+            cityName = resultsArray[indexPath.row]
         }
         
         tableView.deselectRow(at: indexPath, animated: true)
-        performSegue(withIdentifier: K.segueIdentifier , sender: self)
+        if indexPath.section == 0 {
+            performSegue(withIdentifier: K.segueIdentifier , sender: self)
+            return
+        }
+        if resultsArray[indexPath.row] != K.defaultResult {
+            performSegue(withIdentifier: K.segueIdentifier , sender: self)
+        }
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchTextField.endEditing(true)
+        return true
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if searchTextField.text != "" && stop == false {
+            cityName = searchTextField.text!
+            performSegue(withIdentifier: K.segueIdentifier , sender: self)
+            return true
+        }else{
+            searchTextField.placeholder = "Type a City name."
+            return false
+        }
+    }
+    
 }
 
 // MARK: - UITableViewDataSourch
 extension SearchViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 20
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return resultsArray.count+1
+        if section == 0 && searchTextField.text != "" {
+            return 1
+        }else {
+            return resultsArray.count
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 1 {
+            return "Sugested City names: "
+        }
+        return nil
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.tabCellIndetifier, for: indexPath) as! SearchTableViewCell
-        if indexPath.row == 0 {
+        if indexPath.section == 0 {
             cell.resultTextLabel.text = "'\(searchTextField.text!)'"
         }else {
-            cell.resultTextLabel.text = resultsArray[indexPath.row-1]
+            cell.resultTextLabel.text = resultsArray[indexPath.row]
         }
         return cell
     }

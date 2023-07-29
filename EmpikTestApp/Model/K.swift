@@ -14,6 +14,8 @@ struct K {
     static let weatherCollectionViewCell = "WeatherCollectionViewCell"
     static let resultTableViewCell = "SearchTableViewCell" 
     
+    static let defaultResult = "Please put in a valid City name."
+    
     struct ImageNames {
         static let thunderstorm = "cloud.bolt.rain.fill"
         static let drizzle = "cloud.drizzle.fill"
@@ -81,7 +83,7 @@ struct K {
             case ...10:
                 return UIColor(named: K.ColorNames.TemperatureColors.cold)!
             default:
-                return UIColor.black
+                return UIColor.label
             }
         }
     }

@@ -59,7 +59,7 @@ extension WeatherViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.colCellIndetifier, for: indexPath) as! WeatherCollectionViewCell
         if ready {
-            for i in 0...numberOfTimestamps-1 {
+            for i in 0..<numberOfTimestamps {
                 if i == indexPath.row {
                     DispatchQueue.main.async {
                         cell.tempLabel.text = self.fullWeatherData[i].temperature+"ºC"

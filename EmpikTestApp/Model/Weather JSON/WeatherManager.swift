@@ -17,14 +17,17 @@ struct WeatherManager {
     // &q={cityName: String}
     // &cnt={numberOfTimestamps: Int}
     var delegate: WeatherModelDelegate?
-    
-    func getWeather(for cityName: String, with numberOfTimestamps: Int?) {
+
+     func getWeather(for cityName: String, with numberOfTimestamps: Int?) {
+        
+        let city = cityName.components(separatedBy: " ").joined(separator: "%20")
+        
         if let timestamps = numberOfTimestamps {
-            performRequest(with: "\(url)&q=\(cityName)&cnt=\(timestamps)")
+            performRequest(with: "\(url)&q=\(city)&cnt=\(timestamps)")
         }else{
             //Default
-            performRequest(with: "\(url)&q=\(cityName)&cnt=5")
-            print("\(url)&q=\(cityName)&cnt=5")
+            performRequest(with: "\(url)&q=\(city)&cnt=5")
+            print("\(url)&q=\(city)&cnt=5")
         }
     }
     
@@ -57,7 +60,7 @@ struct WeatherManager {
             let decodedData = try decoder.decode(WeatherData.self, from: weatherData)
             let list = decodedData.list
             var fullWeatherArray = [FullWeatherData]()
-            for item in 0...list.count-1 {
+            for item in 0..<list.count {
                 let element = FullWeatherData(time: K.WeatherFuncs.dataFormatting(list[item].dt_txt),
                                               weatherConditionImage: K.WeatherFuncs.weatherImage(from: list[item].weather[0].id),
                                               temperature: K.WeatherFuncs.roundDownString(list[item].main.temp))
